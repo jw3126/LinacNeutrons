@@ -1,0 +1,53 @@
+
+
+# -----------------------------------------------------
+# LINAC
+# -----------------------------------------------------
+
+/gate/world/daughters/name           linac
+/gate/world/daughters/insert         box
+/gate/linac/setMaterial              Air
+/gate/linac/geometry/setXLength      0.5 m
+/gate/linac/geometry/setYLength      0.5 m
+/gate/linac/geometry/setZLength      0.8 m
+/gate/linac/placement/setTranslation 0 0 0 mm
+/gate/linac/vis/setVisible           1
+/gate/linac/vis/setColor             yellow
+
+# -----------------------------------------------------
+# TARGET
+# -----------------------------------------------------
+
+/control/execute mac/linac_target.mac
+
+# -----------------------------------------------------
+# PRIMARY_COLLIMATOR
+# -----------------------------------------------------
+
+/control/execute mac/linac_primary_collimator.mac
+
+
+# -----------------------------------------------------
+# FLATTENING_FILTER
+# -----------------------------------------------------
+
+/control/execute mac/linac_flattening_filter.mac
+
+# -----------------------------------------------------
+# IONIZING_CHAMBER
+# -----------------------------------------------------
+
+/control/execute mac/linac_ionizing_chamber.mac
+
+
+# -----------------------------------------------------
+# BACK_SCATTER_PLATE
+# -----------------------------------------------------
+
+/control/execute mac/linac_back_scatter_plate.mac
+
+# -----------------------------------------------------
+# MIRROR
+# -----------------------------------------------------
+
+/control/execute mac/linac_mirror.mac
