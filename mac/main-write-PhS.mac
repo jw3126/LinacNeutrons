@@ -37,26 +37,12 @@
 /gate/geometry/setMaterialDatabase data/LinacMaterials.db
 /control/execute mac/linac_head.mac
 
-# VIRTUAL PLANE FOR PHASE SPACE
-/gate/linac/daughters/name               PhS_Plane
-/gate/linac/daughters/insert             cylinder
-/gate/PhS_Plane/setMaterial              Vacuum
-/gate/PhS_Plane/geometry/setRmin         0 mm
-/gate/PhS_Plane/geometry/setRmax         40 mm
-/gate/PhS_Plane/geometry/setHeight       1 nm
-/gate/PhS_Plane/placement/setTranslation 0.0 0.0 -297 mm
-/gate/PhS_Plane/vis/setColor             white
-/gate/PhS_Plane/vis/setVisible           1
-
 # =====================================================
 # PHYSICS
 # =====================================================
 
-/gate/physics/addPhysicsList emstandard_opt3
-
-/gate/physics/Gamma/SetCutInRegion      world 1 mm
-/gate/physics/Electron/SetCutInRegion   world 1 mm
-/gate/physics/Positron/SetCutInRegion   world 1 mm
+# /gate/physics/addPhysicsList emstandard_opt3
+/gate/physics/addPhysicsList QGSP_BIC_HP
 
 
 # ----------------------------------------------------
@@ -74,10 +60,10 @@
 /gate/actor/phspLinac/attachTo                   linac
 /gate/actor/phspLinac/save 	                     output/phspLinac.IAEAheader
 /gate/actor/phspLinac/useVolumeFrame             true
-/gate/actor/phspLinac/addFilter                  particleFilter
-/gate/actor/phspLinac/particleFilter/addParticle neutron
 /gate/actor/phspLinac/enableZPosition            true
 /gate/actor/phspLinac/storeOutgoingParticles true
+/gate/actor/phspLinac/addFilter                  particleFilter
+/gate/actor/phspLinac/particleFilter/addParticle neutron
 
 #=====================================================
 # INITIALISATION
@@ -120,5 +106,5 @@
 
 #/tracking/verbose 2
 
-/gate/application/setTotalNumberOfPrimaries 1
+/gate/application/setTotalNumberOfPrimaries 10000000
 /gate/application/start
